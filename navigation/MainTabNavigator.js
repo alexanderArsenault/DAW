@@ -18,6 +18,7 @@ import Colors from '../constants/Colors';
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    // this is where the rest of the screens available to stack on the home page go
   },
   {
     defaultNavigationOptions: {

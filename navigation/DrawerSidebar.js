@@ -1,39 +1,65 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { DrawerItems, SafeAreaView } from 'react-navigation';
+import Colors from '../constants/Colors';
 
-/**
- *  Drawer or Sidebar
- */
 export class Sidebar extends Component {
+
   // navigate to name
   _goTo(name) {
+    console.log(this.props.navigation);
     this.props.navigation.navigate(name);
   }
-  
 
-  /**
-   * You can use map to list projects
-   * But for simple demo use this method
-   */
   render() {
     return (
-      <View style={styles.menu}>
-        <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => this._goTo('Profile')}>
-          <Text> Project 01</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => this._goTo('Profile')}>
-          <Text> Project 02</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => this._goTo('Profile')}>
-          <Text> Project 03</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView style={styles.menu}>
+        <SafeAreaView  forceInset={{ top: 'always', horizontal: 'never' }}>
+        
+          <TouchableOpacity
+            onPress={() => this._goTo('Home')}>
+            <Text style={styles.menuItem}>Home</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => this._goTo('Profile')}>
+            <Text style={styles.menuItem}>Profile</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => this._goTo('Notifications')}>
+            <Text style={styles.menuItem}>Notifcations</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => this._goTo('Contact')}>
+            <Text style={styles.menuItem}>Contact</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this._goTo('Profile')}>
+            <Text 
+              style={styles.menuItem}>Log Out</Text>
+          </TouchableOpacity>
+
+        </SafeAreaView>
+     </ScrollView>
+
+
     );
   }
 } // Version can be specified in package.json
+
+export default Sidebar;
+
+const styles = StyleSheet.create({
+  menu: {
+    backgroundColor: Colors.brand01,
+    flex:1,
+    padding: 20,
+  },
+  menuItem:{
+    color: Colors.white,
+    fontSize: 20,
+    paddingBottom: 10,
+  },
+})

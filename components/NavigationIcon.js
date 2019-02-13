@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Icon } from 'expo';
-import { withNavigation, DrawerActions } from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
@@ -14,7 +14,7 @@ class NavigationIcon extends React.Component {
             ? `ios-menu`
             : 'md-menu'
         }
-        onPress={() => {this.props.navigation.dispatch(DrawerActions.openDrawer())}}
+        onPress={() => {this.props.navigation.openDrawer()}}
         size={30}
         style={{ paddingHorizontal: 15}}
         color={Colors.tabIconDefault}

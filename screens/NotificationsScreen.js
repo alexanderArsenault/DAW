@@ -4,9 +4,9 @@ import NavigationIcon from '../components/NavigationIcon';
 import { SafeAreaView } from 'react-navigation';
 
 
-export default class ProfileScreen extends React.Component {
+export default class NotificationsScreen extends React.Component {
   static navigationOptions = {
-    title: 'PROFILE',
+    title: 'NOTIFICATIONS',
     headerLeft: (
         <NavigationIcon />
     ),
@@ -15,7 +15,7 @@ export default class ProfileScreen extends React.Component {
   render() {
     return (
       <SafeAreaView>
-        <Text>Profile</Text>
+        <Text>What up Bruh</Text>
       </SafeAreaView>
     );
   }

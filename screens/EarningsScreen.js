@@ -4,10 +4,10 @@ import { ExpoLinksView } from '@expo/samples';
 import NavigationIcon from '../components/NavigationIcon';
 
 
-export default class LinksScreen extends React.Component {
+export default class EarningsScreen extends React.Component {
   static navigationOptions = {
     title: 'EARNINGS',
-    headerRight: (
+    headerLeft: (
         <NavigationIcon />
     ),
   };

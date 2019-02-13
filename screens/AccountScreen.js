@@ -3,10 +3,10 @@ import { ExpoConfigView } from '@expo/samples';
 import NavigationIcon from '../components/NavigationIcon';
 
 
-export default class SettingsScreen extends React.Component {
+export default class AccountScreen extends React.Component {
   static navigationOptions = {
     title: 'MY ACCOUNT',
-    headerRight: (
+    headerLeft: (
         <NavigationIcon />
     ),
   };

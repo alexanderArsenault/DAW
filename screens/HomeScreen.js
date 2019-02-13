@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { SafeAreaView } from 'react-navigation'
+import { SafeAreaView } from 'react-navigation';
 import { WebBrowser } from 'expo';
 import NavigationIcon from '../components/NavigationIcon';
 import { MonoText } from '../components/StyledText';
@@ -17,7 +17,7 @@ import { MonoText } from '../components/StyledText';
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'HOME',
-    headerRight: (
+    headerLeft: (
       <NavigationIcon />
     ),
   };

@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, ScrollView } from 'react-native';
 import NavigationIcon from '../components/NavigationIcon';
 import { SafeAreaView } from 'react-navigation';
 
-
-export default class ProfileScreen extends React.Component {
+export default class ContactScreen extends React.Component {
   static navigationOptions = {
-    title: 'PROFILE',
+    title: 'CONTACT',
     headerLeft: (
         <NavigationIcon />
     ),
@@ -14,9 +13,7 @@ export default class ProfileScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <Text>Profile</Text>
-      </SafeAreaView>
+      <Text>What up Bruh - Contact</Text>        
     );
   }
 }
