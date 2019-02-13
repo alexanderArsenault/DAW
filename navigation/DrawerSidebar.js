@@ -7,7 +7,6 @@ export class Sidebar extends Component {
 
   // navigate to name
   _goTo(name) {
-    console.log(this.props.navigation);
     this.props.navigation.navigate(name);
   }
 
@@ -15,11 +14,11 @@ export class Sidebar extends Component {
     return (
       <ScrollView style={styles.menu}>
         <SafeAreaView  forceInset={{ top: 'always', horizontal: 'never' }}>
-        
+{/*         
           <TouchableOpacity
             onPress={() => this._goTo('Home')}>
             <Text style={styles.menuItem}>Home</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           <TouchableOpacity
             onPress={() => this._goTo('Profile')}>

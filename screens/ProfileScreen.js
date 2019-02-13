@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-import NavigationIcon from '../components/NavigationIcon';
+import BackToHomeIcon from '../components/BackToHomeIcon';
 import { SafeAreaView } from 'react-navigation';
 
 
@@ -8,7 +8,7 @@ export default class ProfileScreen extends React.Component {
   static navigationOptions = {
     title: 'PROFILE',
     headerLeft: (
-        <NavigationIcon />
+        <BackToHomeIcon />
     ),
   };
 

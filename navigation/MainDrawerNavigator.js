@@ -8,6 +8,24 @@ import Colors from '../constants/Colors'
 import MainTabNavigator from './MainTabNavigator';
 
 
+const ProfileStack = createStackNavigator(
+  {
+    Profile: ProfileScreen,
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: Colors.brand01,
+      },
+      headerTintColor: Colors.white,
+      headerTitleStyle: {
+        fontSize: 20,
+        fontWeight: '300',
+      },
+    }
+  }
+);
+
 const ContactStack = createStackNavigator(
   {
     Contact: ContactScreen,
@@ -44,25 +62,6 @@ const NotificationsStack = createStackNavigator(
   }
 );
 
-
-const ProfileStack = createStackNavigator(
-  {
-    Profile: ProfileScreen,
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.brand01,
-      },
-      headerTintColor: Colors.white,
-      headerTitleStyle: {
-        fontSize: 20,
-        fontWeight: '300',
-      },
-    }
-  }
-);
-
 const LogoutStack = createStackNavigator(
   {
     Logout: ProfileScreen,
@@ -80,7 +79,6 @@ const LogoutStack = createStackNavigator(
     }
   }
 );
-
 
 const Drawer = createDrawerNavigator(
   {
