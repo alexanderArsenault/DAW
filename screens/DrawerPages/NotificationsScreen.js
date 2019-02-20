@@ -1,15 +1,11 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-import BackToHomeIcon from '../components/BackToHomeIcon';
 import { SafeAreaView } from 'react-navigation';
 
 
 export default class NotificationsScreen extends React.Component {
   static navigationOptions = {
     title: 'NOTIFICATIONS',
-    headerLeft: (
-        <BackToHomeIcon />
-    ),
   };
 
   render() {

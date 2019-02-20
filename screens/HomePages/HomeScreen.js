@@ -11,15 +11,11 @@ import {
 
 import { SafeAreaView } from 'react-navigation';
 import { WebBrowser } from 'expo';
-import NavigationIcon from '../components/NavigationIcon';
-import { MonoText } from '../components/StyledText';
+import { MonoText } from '../../components/StyledText';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'HOME',
-    headerLeft: (
-      <NavigationIcon />
-    ),
   };
 
   render() {
@@ -31,8 +27,8 @@ export default class HomeScreen extends React.Component {
             <Image
               source={
                 __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
+                  ? require('../../assets/images/robot-dev.png')
+                  : require('../../assets/images/robot-prod.png')
               }
               style={styles.welcomeImage}
             />

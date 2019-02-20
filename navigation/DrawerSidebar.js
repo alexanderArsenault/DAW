@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { DrawerItems, SafeAreaView } from 'react-navigation';
-import Colors from '../constants/Colors';
+import { Text, StyleSheet, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import Colors from '../constants/Variables';
 
 export class Sidebar extends Component {
 
@@ -10,15 +10,16 @@ export class Sidebar extends Component {
     this.props.navigation.navigate(name);
   }
 
+  _signOutAsync = async () => {
+    // Sign out Modal
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
+  };
+
   render() {
     return (
       <ScrollView style={styles.menu}>
         <SafeAreaView  forceInset={{ top: 'always', horizontal: 'never' }}>
-{/*         
-          <TouchableOpacity
-            onPress={() => this._goTo('Home')}>
-            <Text style={styles.menuItem}>Home</Text>
-          </TouchableOpacity> */}
 
           <TouchableOpacity
             onPress={() => this._goTo('Profile')}>
@@ -35,15 +36,12 @@ export class Sidebar extends Component {
             <Text style={styles.menuItem}>Contact</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => this._goTo('Profile')}>
-            <Text 
-              style={styles.menuItem}>Log Out</Text>
+            onPress={() => this._signOutAsync()}>
+            <Text style={styles.menuItem}>Log Out</Text>
           </TouchableOpacity>
 
         </SafeAreaView>
      </ScrollView>
-
-
     );
   }
 } // Version can be specified in package.json

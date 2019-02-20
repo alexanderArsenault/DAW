@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { Icon } from 'expo';
 import { withNavigation } from 'react-navigation';
 
-import Colors from '../constants/Colors';
+import Colors from '../constants/Variables';
 
 class NavigationIcon extends React.Component {
   render() {
@@ -11,10 +11,10 @@ class NavigationIcon extends React.Component {
       <Icon.Ionicons
         name={
             Platform.OS === 'ios'
-            ? `ios-menu`
-            : 'md-menu'
+            ? `ios-home`
+            : 'md-home'
         }
-        onPress={() => {this.props.navigation.openDrawer()}}
+        onPress={() => { this.props.navigation.navigate('Home')}}
         size={30}
         style={{ paddingHorizontal: 15}}
         color={Colors.tabIconDefault}

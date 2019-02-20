@@ -1,82 +1,72 @@
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+import React from 'react';
 import { Dimensions } from 'react-native';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+
 import DrawerSidebar from './DrawerSidebar';
-import ProfileScreen from '../screens/ProfileScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
-import ContactScreen from '../screens/ContactScreen';
-import Colors from '../constants/Colors'
+
+import ProfileScreen from '../screens/DrawerPages/ProfileScreen';
+import NotificationsScreen from '../screens/DrawerPages/NotificationsScreen';
+import ContactScreen from '../screens/DrawerPages/ContactScreen';
 import MainTabNavigator from './MainTabNavigator';
 
+import NavigationIcon from '../components/IconMenu';
+import BackToHomeIcon from '../components/IconBackToHome';
+
+import Colors from '../constants/Variables'
+
+const defaultNavigationOptions = {
+  headerStyle: {
+    backgroundColor: Colors.brand01,
+  },
+  headerTintColor: Colors.white,
+  headerTitleStyle: {
+    fontSize: 20,
+    fontWeight: '300',
+  },
+  headerRight: (
+    <NavigationIcon />
+  ),
+  headerLeft: (
+    <BackToHomeIcon />
+  )
+}
 
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.brand01,
-      },
-      headerTintColor: Colors.white,
-      headerTitleStyle: {
-        fontSize: 20,
-        fontWeight: '300',
-      },
-    }
+    defaultNavigationOptions,
   }
 );
+
 
 const ContactStack = createStackNavigator(
   {
-    Contact: ContactScreen,
+    Contact: ContactScreen
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.brand01,
-      },
-      headerTintColor: Colors.white,
-      headerTitleStyle: {
-        fontSize: 20,
-        fontWeight: '300',
-      },
-    }
+    defaultNavigationOptions,
   }
 );
 
+
 const NotificationsStack = createStackNavigator(
   {
-    Notifications: NotificationsScreen,
+    Notifications: NotificationsScreen
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.brand01,
-      },
-      headerTintColor: Colors.white,
-      headerTitleStyle: {
-        fontSize: 20,
-        fontWeight: '300',
-      },
-    }
+    defaultNavigationOptions,
   }
 );
+
 
 const LogoutStack = createStackNavigator(
   {
     Logout: ProfileScreen,
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.brand01,
-      },
-      headerTintColor: Colors.white,
-      headerTitleStyle: {
-        fontSize: 20,
-        fontWeight: '300',
-      },
-    }
+    defaultNavigationOptions,
   }
 );
 
@@ -89,7 +79,7 @@ const Drawer = createDrawerNavigator(
     LogoutStack,
   },
   {
-    contentComponent: DrawerSidebar, // navigation goes here
+    contentComponent: DrawerSidebar,
     drawerWidth: Dimensions.get('window').width - 125,
   }
 );

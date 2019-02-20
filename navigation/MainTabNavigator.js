@@ -3,34 +3,37 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import React from 'react';
 import { Platform } from 'react-native';
 
-//  Bottom Bar Screens
-import HomeScreen from '../screens/HomeScreen';
-import EarningsScreen from '../screens/EarningsScreen';
-import AccountScreen from '../screens/AccountScreen';
-import TabBarIcon from '../components/TabBarIcon';
+import HomeScreen from '../screens/HomePages/HomeScreen';
+import EarningsScreen from '../screens/HomePages/EarningsScreen';
+import AccountScreen from '../screens/HomePages/AccountScreen';
+import TabBarIcon from '../components/IconTabBar';
 
-import Colors from '../constants/Colors';
+import NavigationIcon from '../components/IconMenu';
 
+import Colors from '../constants/Variables';
 
-// createStackNavigator Provides a way for your app to transition between screens where each new screen is placed on top of a stack.
+// Default Nav Settings
+const defaultNavigationOptions = {
+  headerStyle: {
+    backgroundColor: Colors.brand01,
+  },
+  headerTintColor: Colors.white,
+  headerTitleStyle: {
+    fontSize: 20,
+    fontWeight: '300',
+  },
+  headerRight: (
+    <NavigationIcon />
+  ),
+}
 
 // Home Stack
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
-    // this is where the rest of the screens available to stack on the home page go
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.brand01,
-      },
-      headerTintColor: Colors.white,
-      headerTitleStyle: {
-        fontSize: 20,
-        fontWeight: '300',
-      },
-    }
+    defaultNavigationOptions,
   }
 );
 
@@ -55,16 +58,7 @@ const EarningsStack = createStackNavigator(
     Earnings: EarningsScreen,
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.brand01,
-      },
-      headerTintColor: Colors.white,
-      headerTitleStyle: {
-        fontSize: 20,
-        fontWeight: '300',
-      },
-    }
+    defaultNavigationOptions,
   }
 );
 
@@ -89,16 +83,7 @@ const AccountStack = createStackNavigator(
     Account: AccountScreen,
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.brand01,
-      },
-      headerTintColor: Colors.white,
-      headerTitleStyle: {
-        fontSize: 20,
-        fontWeight: '300',
-      },
-    }
+    defaultNavigationOptions,
   }
 );
 
