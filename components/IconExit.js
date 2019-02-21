@@ -1,0 +1,26 @@
+import React from 'react';
+import { Platform } from 'react-native';
+import { Icon } from 'expo';
+import { withNavigation } from 'react-navigation';
+
+import Colors from '../constants/Variables';
+
+class NavigationIcon extends React.Component {
+  render() {
+    return (
+      <Icon.Ionicons
+        name={
+            Platform.OS === 'ios'
+            ? `ios-close`
+            : 'md-close'
+        }
+        onPress={() => {this.props.navigation.closeDrawer()}}
+        size={38}
+        style={{ paddingHorizontal: 15}}
+        color={Colors.tabIconDefault}
+      />
+    );
+  }
+}
+
+export default withNavigation(NavigationIcon);

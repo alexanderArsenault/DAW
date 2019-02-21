@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
+import IconExit from '../components/IconExit';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import Colors from '../constants/Variables';
-
+import Variables from '../constants/Variables';
+import { Divider } from 'react-native-elements';
 export class Sidebar extends Component {
 
   // navigate to name
@@ -18,8 +19,14 @@ export class Sidebar extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.menu}>
-        <SafeAreaView  forceInset={{ top: 'always', horizontal: 'never' }}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.headerArea}>
+          <IconExit></IconExit>
+        </View>
+
+        <View style={styles.menu} forceInset={{ top: 'always', horizontal: 'never' }}>
+          <Text style={styles.menuHeader}>Menu</Text>
+          <Divider style={{backgroundColor: Variables.white, height: 1, marginBottom: 20,}}/>
 
           <TouchableOpacity
             onPress={() => this._goTo('Profile')}>
@@ -39,9 +46,8 @@ export class Sidebar extends Component {
             onPress={() => this._signOutAsync()}>
             <Text style={styles.menuItem}>Log Out</Text>
           </TouchableOpacity>
-
-        </SafeAreaView>
-     </ScrollView>
+        </View>
+      </SafeAreaView>
     );
   }
 } // Version can be specified in package.json
@@ -49,14 +55,32 @@ export class Sidebar extends Component {
 export default Sidebar;
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Variables.brand01,
+    flex: 1,
+  },
   menu: {
-    backgroundColor: Colors.brand01,
-    flex:1,
-    padding: 20,
+    paddingVertical: 20,
+    paddingHorizontal: 40,
+    flex: 1,
   },
   menuItem:{
-    color: Colors.white,
-    fontSize: 20,
-    paddingBottom: 10,
+    color: Variables.white,
+    fontSize: 21,
+    fontFamily: Variables.fontLight,
+    paddingBottom: 20,
   },
+  menuHeader: {
+    fontSize: 22,
+    fontFamily: Variables.fontBold,
+    textTransform: 'uppercase',
+    color: Variables.white,
+    paddingBottom: 20,
+  },
+  headerArea: {
+    height: 45,
+    justifyContent: 'center',
+    borderBottomColor: Variables.white,
+    borderBottomWidth: 1,
+  }
 })

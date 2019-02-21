@@ -12,6 +12,7 @@ export default createAppContainer(createSwitchNavigator(
     Auth: SignUpOrInNavigator,
   },
   {
-    initialRouteName: 'AuthLoading'
+    // initialRouteName: 'AuthLoading'
+    initialRouteName: 'App'
   }
 ));
