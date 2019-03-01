@@ -3,23 +3,29 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import React from 'react';
 import { Platform } from 'react-native';
 
-import HomeScreen from '../screens/HomePages/HomeScreen';
-import EarningsScreen from '../screens/HomePages/EarningsScreen';
-import AccountScreen from '../screens/HomePages/AccountScreen';
+import HomeScreen from '../screens/HomeScreen';
+import PostJobScreen from '../screens/HomePages/PostJobScreen';
+
+
+import EarningsScreen from '../screens/EarningsScreen';
+import AccountScreen from '../screens/AccountScreen';
 import TabBarIcon from '../components/IconTabBar';
 
 import NavigationIcon from '../components/IconMenu';
 
-import Colors from '../constants/Variables';
+import Variables from '../constants/Variables';
 
 // Default Nav Settings
 const defaultNavigationOptions = {
   headerStyle: {
-    backgroundColor: Colors.brand01,
+    backgroundColor: Variables.brand01,
+    borderBottomWidth: 0,
   },
-  headerTintColor: Colors.white,
+  headerTintColor: Variables.white,
   headerTitleStyle: {
-    fontSize: 20,
+    fontSize: 25,
+    fontFamily: Variables.fontLight,
+    textTransform: 'uppercase',
     fontWeight: '300',
   },
   headerRight: (
@@ -31,6 +37,7 @@ const defaultNavigationOptions = {
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    PostJob: PostJobScreen,
   },
   {
     defaultNavigationOptions,
@@ -113,7 +120,7 @@ export default createBottomTabNavigator(
 
     tabBarOptions: {
       labelStyle: {
-        color: Colors.white,
+        color: Variables.white,
         textTransform: 'uppercase',
         fontSize: 13,
       },
@@ -122,11 +129,11 @@ export default createBottomTabNavigator(
         paddingBottom: 8
       },
       style: {
-        backgroundColor: Colors.brand01,
+        backgroundColor: Variables.brand01,
         height: 60,
       },
-      activeBackgroundColor: Colors.brand01Dark,
-      inactiveBackgroundColor: Colors.brand01
+      activeBackgroundColor: Variables.brand01Dark,
+      inactiveBackgroundColor: Variables.brand01
     }
   }
 );

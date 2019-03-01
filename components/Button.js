@@ -16,7 +16,7 @@ export default class ButtonDAW extends React.Component {
 
 const styles = StyleSheet.create({
     button:{
-        fontSize: 23,
+        fontSize: 22,
         marginBottom: 10,
         color: Colors.white,
         textAlign: 'center',
