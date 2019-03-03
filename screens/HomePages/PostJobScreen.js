@@ -115,7 +115,7 @@ export default class PostJob extends React.Component {
 					label="Job title"
 					labelTextStyle={{ fontFamily: Variables.fontRegular }}
 					tintColor={Variables.brand01Dark}
-					containerStyle={{ paddingTop: 0, marginBottom: -5 }}
+					containerStyle={{ paddingTop: 0, marginBottom: -15 }}
 					value={title}
 					activeLineWidth={2}
 					lineWidth={0}
@@ -126,10 +126,10 @@ export default class PostJob extends React.Component {
 				/>
 
 				<TextField
-					label="Description"
+					label="Job Description"
 					labelTextStyle={{ fontFamily: Variables.fontRegular }}
 					tintColor={Variables.brand01Dark}
-					containerStyle={{ padding: 0, marginBottom: -5 }}
+					containerStyle={{ padding: 0, paddingBottom: 10 }}
 					value={description}
 					activeLineWidth={2}
 					lineWidth={0}
