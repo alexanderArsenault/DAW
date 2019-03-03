@@ -4,10 +4,24 @@ import Variables from "../../constants/Variables";
 import DropdownBodyContainer from "../../components/PostJobComponents/DropdownBodyContainer";
 import ScrollPicker from "react-native-wheel-scroll-picker";
 
-// TODO - FIX CORRECT DATE
-// Cant select date or year
-//TODO - AUTOPICK CORRECT DATEE
-// USE REDUX
+// TODO - CHECK THIS PULL REQUEST TO SEE IF IT WENT LIVE AND UPDATE LIB
+// https://github.com/yasemincidem/react-native-picker-scrollview/pull/1/files
+
+const monthsInYear = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December"
+];
+
 export default class DateBody extends React.Component {
 	constructor(props) {
 		super(props);
@@ -17,64 +31,57 @@ export default class DateBody extends React.Component {
 		let m = date.getMonth();
 		let y = date.getFullYear();
 
-		this.state.currentDate = d;
-		this.state.currentMonth = m;
-		this.state.currentYear = y;
+		this.state = {
+			currentDate: d,
+			currentMonth: m,
+			currentYear: y,
 
-		this.state.selectedDate = d;
-		this.state.selectedMonth = m;
-		this.state.selectedYear = y;
+			selectedDateIndex: d - 1,
+			selectedDate: d,
+			selectedMonth: m,
+			selectedYear: y
+		};
 
 		daysInCurrentMonth = new Date(y, m + 1, 0).getDate();
 
 		let daysArray = [];
-		for (x = 0; x < daysInCurrentMonth + 1; x++) {
-			daysArray.push(x);
+		for (x = 0; x !== daysInCurrentMonth + 1; x++) {
+			daysArray.push(x.toString());
 		}
+		daysArray.shift();
+
 		this.state.daysInSelectedMonth = daysArray;
 
+		this.state.datekey = Math.random();
 		// end of year settings
-		// if (this.state.currentMonth > 10) {
-		let yearArray = [y, y + 1];
+		let yearArray = [y];
+		if (this.state.currentMonth > 10) {
+			yearArray.push(y + 1);
+		}
 		this.state.selectableYearsArray = yearArray;
-		// }
 	}
 
 	state = {
 		selectedMonth: null,
 		selectedDate: null,
 		selectedYear: null,
-		monthsInYear: [
-			"January",
-			"February",
-			"March",
-			"April",
-			"May",
-			"June",
-			"July",
-			"August",
-			"September",
-			"October",
-			"November",
-			"December"
-		],
 		selectableYearsArray: []
 	};
 
 	render() {
-		console.log(this.state);
 		return (
 			<DropdownBodyContainer>
 				<ScrollPicker
 					key={this.state.datekey}
 					dataSource={this.state.daysInSelectedMonth}
-					selectedIndex={this.state.selectedDate}
+					selectedIndex={this.state.selectedDateIndex}
 					renderItem={(data, index, isSelected) => {
 						//
 					}}
 					onValueChange={(data, selectedIndex) => {
 						this.setState({
-							selectedDate: selectedIndex
+							selectedDate: data,
+							selectedDateIndex: selectedIndex
 						});
 					}}
 					wrapperHeight={120}
@@ -98,10 +105,9 @@ export default class DateBody extends React.Component {
 					}}
 					itemColor={"#B4B4B4"}
 				/>
-
 				{/* Month */}
 				<ScrollPicker
-					dataSource={this.state.monthsInYear}
+					dataSource={monthsInYear}
 					selectedIndex={this.state.selectedMonth}
 					renderItem={(data, index, isSelected) => {
 						//
@@ -128,7 +134,7 @@ export default class DateBody extends React.Component {
 						if (newMonthDays < this.state.selectedDate) {
 							this.setState({
 								// update the currently selected date to be last in array
-								selectedDate: newMonthDays - 1,
+								selectedDateIndex: newMonthDays - 1,
 								// refresh the datepicker component
 								datekey: Math.random()
 							});
@@ -160,7 +166,6 @@ export default class DateBody extends React.Component {
 					}}
 					itemColor={"#B4B4B4"}
 				/>
-				{/* Year */}
 				<ScrollPicker
 					dataSource={this.state.selectableYearsArray}
 					selectedIndex={0}

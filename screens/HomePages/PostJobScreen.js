@@ -15,6 +15,8 @@ import IconUp from "../../components/IconCaretteUp";
 import Variables from "../../constants/Variables";
 import Accordion from "react-native-collapsible/Accordion";
 
+import Button from "../../components/Button";
+
 import PositionDropdown from "../../components/PostJobComponents/PositionDropdown";
 import DateDropdown from "../../components/PostJobComponents/DateDropdown";
 import SexDropdown from "../../components/PostJobComponents/SexDropdown";
@@ -109,10 +111,11 @@ export default class PostJob extends React.Component {
 		return (
 			<ScrollView style={styles.formcontainer}>
 				<TextField
+					style={{ paddingTop: 0 }}
 					label="Job title"
 					labelTextStyle={{ fontFamily: Variables.fontRegular }}
 					tintColor={Variables.brand01Dark}
-					containerStyle={{ padding: 0 }}
+					containerStyle={{ paddingTop: 0, marginBottom: -5 }}
 					value={title}
 					activeLineWidth={2}
 					lineWidth={0}
@@ -126,7 +129,7 @@ export default class PostJob extends React.Component {
 					label="Description"
 					labelTextStyle={{ fontFamily: Variables.fontRegular }}
 					tintColor={Variables.brand01Dark}
-					containerStyle={{ padding: 0 }}
+					containerStyle={{ padding: 0, marginBottom: -5 }}
 					value={description}
 					activeLineWidth={2}
 					lineWidth={0}
@@ -146,6 +149,20 @@ export default class PostJob extends React.Component {
 					duration={400}
 					onChange={this.setSections}
 				/>
+				<View style={styles.buttoncontainer}>
+					<Button
+						backgroundColor={Variables.brand02}
+						onPress={() => this.props.navigation.navigate("Home")}
+					>
+						Post Job{" "}
+					</Button>
+					<Button
+						backgroundColor={Variables.brand02}
+						onPress={() => this.props.navigation.navigate("Home")}
+					>
+						Delete Job{" "}
+					</Button>
+				</View>
 			</ScrollView>
 		);
 	}
@@ -177,5 +194,9 @@ let styles = StyleSheet.create({
 		fontFamily: Variables.fontRegular,
 		fontSize: 22,
 		color: Variables.white
+	},
+	buttoncontainer: {
+		paddingVertical: 20,
+		flex: 1
 	}
 });
